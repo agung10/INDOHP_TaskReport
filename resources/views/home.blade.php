@@ -265,7 +265,7 @@
             <div class="card-box widget-user">
                 <div>
                     <div class="avatar-lg float-left mr-3">
-                        <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="user">
+                        <img src="img/user-default.jpg" class="img-fluid rounded-circle" alt="user">
                     </div>
                     <div class="wid-u-info">
                         <h5 class="mt-0">Stillnotdavid</h5>
@@ -320,7 +320,7 @@
 
                     <div class="inbox-item">
                         <a href="#">
-                            <div class="inbox-item-img"><img src="assets/images/users/user-1.jpg" class="rounded-circle" alt=""></div>
+                            <div class="inbox-item-img"><img src="img/user-default.jpg" class="rounded-circle" alt=""></div>
                             <h5 class="inbox-item-author mt-0 mb-1">Chadengle</h5>
                             <p class="inbox-item-text">Hey! there I'm available...</p>
                             <p class="inbox-item-date">13:40 PM</p>

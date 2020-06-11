@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Adminto - Responsive Admin Dashboard Template</title>
+    <title>INDOHP Task Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -29,7 +29,7 @@
                         <a href="index-2.html">
                             <span><img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="22"></span>
                         </a>
-                        <p class="text-muted mt-2 mb-4">Responsive Admin Dashboard</p>
+                        <p class="text-muted mt-2 mb-4">Task Reporting Application</p>
                     </div>
                     <div class="card">
 
@@ -85,7 +85,6 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p> <a href="pages-recoverpw.html" class="text-muted ml-1"><i class="fa fa-lock mr-1"></i>Forgot your password?</a></p>
                             <p class="text-muted">Don't have an account? <a href="{{ ('register') }}" class="text-dark ml-1"><b>Sign Up</b></a></p>
                         </div> <!-- end col -->
                     </div>
