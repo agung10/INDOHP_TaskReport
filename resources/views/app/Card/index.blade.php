@@ -3,6 +3,9 @@
 @section('customCSS')
 <!-- Custom box css -->
 <link href="{{asset('assets/libs/custombox/custombox.min.css')}}" rel="stylesheet">
+
+<link href="{{asset('assets/libs/bootstrap-datepicker/bootstrap-datepicker.css')}}" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -28,8 +31,13 @@
     <div class="card card-body">
         <h4 class="card-title">Activity Action</h4>
         <div class="row">
-            <div class="col-12">
-                <a href="#" class="btn btn-success rounded"><i class="fas fa-plus mr-1"></i> Add New Card</a>
+            <div class="col-6">
+                <a href="#new_card" class="btn btn-success rounded" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#36404a">
+                    <i class="fas fa-plus mr-1"></i>
+                    <span>Add New Card</span> 
+                </a>
+                </div>
+            <div class="col-6">
                 <a href="#" class="btn btn-danger rounded"><i class="fas fa-power-off mr-1"></i> Reset Activity</a>
             </div>
         </div>
@@ -44,7 +52,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item">Add New Task</a>
+                <a href="#new_task" class="dropdown-item" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#36404a">
+                    Add New Task
+                </a>
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item">Delete Card</a>
             </div>
@@ -103,7 +113,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item">Add New Task</a>
+                <a href="#new_task" class="dropdown-item" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#36404a">
+                    Add New Task
+                </a>
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item">Delete Card</a>
             </div>
@@ -179,7 +191,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item">Add New Task</a>
+                <a href="#new_task" class="dropdown-item" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#36404a">
+                    Add New Task
+                </a>
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item">Delete Card</a>
             </div>
@@ -229,6 +243,8 @@
         </div>
     </div>
 </div><!-- end col -->
+    @include('../layouts.component.Modal.NewCard')
+    @include('../layouts.component.Modal.NewTask')
 @endsection
 
 @section('customJS')
@@ -241,4 +257,12 @@
 <!-- dragula init -->
 <script src="{{asset('assets/js/pages/kanban.init.js')}}"></script>
 
+<script src="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+<!-- Init js-->
+<script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
 @endsection

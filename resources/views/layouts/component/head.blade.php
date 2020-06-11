@@ -7,9 +7,6 @@
 <!-- App favicon -->
 <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
-<!--Morris Chart-->
-<link rel="stylesheet" href="{{asset('assets/libs/morris-js/morris.css')}}"/>
-
 @yield('customCSS')
 
 <!-- App css -->

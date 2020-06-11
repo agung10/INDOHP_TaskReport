@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('customCSS')
+<!-- Custom box css -->
+<link href="{{asset('assets/libs/custombox/custombox.min.css')}}" rel="stylesheet">
+@endsection
+
 @section('content')
 <!-- Start Content-->
 <div class="container-fluid">
@@ -9,7 +14,10 @@
                 <div class="card-body">
                     <h4 class="card-title text-white">Create New Activity</h4>
                     <p class="card-text">You can add new activities by clicking the button.</p>
-                    <button class="btn btn-success waves-effect"> <i class="fas fa-plus mr-1"></i> <span>Add New Activity</span> </button>
+                    <a href="#custom-modal" class="btn btn-success btn-sm waves-effect" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#36404a">
+                        <i class="fas fa-plus mr-1"></i> 
+                        <span>Add New Activity</span> 
+                    </a>
                 </div>
             </div>
         </div>
@@ -103,9 +111,13 @@
         </div><!-- end col-->
     </div>
     <!-- end row -->
+    @include('../layouts.component.Modal.ActivityCreate')
 @endsection
 
 @section('customJS')
+<!-- Modal-Effect -->
+<script src="{{asset('assets/libs/custombox/custombox.min.js')}}"></script>
+
 <script>
     $('#activity_link').addClass('active')
 </script>

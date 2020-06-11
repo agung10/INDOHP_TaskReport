@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('customCSS')
+<!--Morris Chart-->
+<link rel="stylesheet" href="{{asset('assets/libs/morris-js/morris.css')}}"/>
+@endsection
+
 @section('content')
 <div class="container-fluid">
 
