@@ -9,6 +9,9 @@
 
 @yield('customCSS')
 
+<!-- Sweet Alert-->
+<link href="{{asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet"/>
+
 <!-- App css -->
 <link href="{{asset('/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
 <link href="{{asset('/assets/css/icons.min.css')}}" rel="stylesheet" />

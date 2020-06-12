@@ -4,7 +4,11 @@
 <!-- Custom box css -->
 <link href="{{asset('assets/libs/custombox/custombox.min.css')}}" rel="stylesheet">
 
-<link href="{{asset('assets/libs/bootstrap-datepicker/bootstrap-datepicker.css')}}" rel="stylesheet">
+<!-- Plugins css -->
+<link href="{{asset('assets/libs/multiselect/multi-select.css')}}"  rel="stylesheet" />
+<link href="{{asset('assets/libs/select2/select2.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css')}}" rel="stylesheet">
 
 @endsection
 
@@ -84,7 +88,14 @@
             @endif
         </ul>
     </div>
-</div>
+</div><script>
+    Swal.fire({
+        title:"Berhasil menambah Data!",
+        text:"{{ session('alertStore') }}",
+        type:"success",
+        confirmButtonClass:"btn btn-confirm mt-2"
+    })
+</script>
 @endforeach
   
     @include('layouts.component.Modal.NewCard')
@@ -102,6 +113,8 @@
 <!-- dragula init -->
 <script src="{{asset('assets/js/pages/kanban.init.js')}}"></script>
 
+<script src="{{asset('assets/libs/multiselect/jquery.multi-select.js')}}"></script>
+<script src="{{asset('assets/libs/select2/select2.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js')}}"></script>
@@ -110,8 +123,8 @@
 
 <!-- Init js-->
 <script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
-<script src="{{ asset('js/custom-datepicker-init.js') }}"></script>
-<script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
+<script src="{{asset('js/custom-datepicker-init.js') }}"></script>
+
 <script>
     $('.openModalAddTask').click(function(){
         let card_id = $(this).attr('__card_id')
@@ -142,4 +155,11 @@
         $('#editTaskModal').modal('show')
     })
 </script>
+
+<!-- Sweet Alerts js -->
+<script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
+<!-- Sweet alert init js-->
+<script src="{{asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+@include('layouts.component.alert')
 @endsection

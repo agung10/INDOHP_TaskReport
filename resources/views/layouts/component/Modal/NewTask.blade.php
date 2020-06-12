@@ -37,21 +37,22 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label class="control-label">Started At</label>
-                        
                         <div class="input-group">
-                            <input type="text" name="started_at" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-startedat">
+                            <input name="started_at" type="time" class="form-control">
+                            <!-- <input id="timepicker2" name="started_at" type="text" class="form-control">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="ti-calendar"></i></span>
-                            </div>
+                                <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="endedat">Ended At</label>
+                        <label class="control-label">Started At</label>
                         <div class="input-group">
-                            <input type="text" name="ended_at" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-endedat">
+                            <input name="ended_at" type="time" class="form-control">
+                            <!-- <input id="timepicker2" name="ended_at" type="text" class="form-control">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="ti-calendar"></i></span>
-                            </div>
+                                <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                            </div> -->
                         </div>
                     </div>
                 </div>
