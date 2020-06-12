@@ -84,23 +84,50 @@
                         </span>
                     </a>
                 </li>
+                <div class="project-members mb-2">
+                    <h5 class="float-left mr-3">Team :</h5>
+                    <div class="avatar-group">
+                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mat Helme">
+                            <img src="{{asset('assets/images/users/user-1.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
+                        </a>
+
+                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Michael Zenaty">
+                            <img src="{{asset('assets/images/users/user-2.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
+                        </a>
+
+                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="James Anderson">
+                            <img src="{{asset('assets/images/users/user-3.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
+                        </a>
+
+                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mat Helme">
+                            <img src="{{asset('assets/images/users/user-4.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
+                        </a>
+                        <a href="#" class="avatar-group-item">
+                            <span class="add-new-plus"><i class="mdi mdi-plus"></i></span>
+                        </a>
+
+                    </div>
+                </div>
+                <!-- <div class="kanban-detail">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="" data-toggle="tooltip" data-placement="top" title="{{ $res2->name }}"> 
+                                <img src="{{asset('assets/images/users/user-2.jpg')}}" alt="img" class="avatar-sm rounded-circle">
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
                 @endforeach
             @endif
         </ul>
     </div>
-</div><script>
-    Swal.fire({
-        title:"Berhasil menambah Data!",
-        text:"{{ session('alertStore') }}",
-        type:"success",
-        confirmButtonClass:"btn btn-confirm mt-2"
-    })
-</script>
+</div>
 @endforeach
   
     @include('layouts.component.Modal.NewCard')
     @include('layouts.component.Modal.NewTask')
     @include('layouts.component.Modal.EditTask')
+    @include('layouts.component.Modal.Team')
     @include('layouts.component.Modal.ModalDestroy')
 @endsection
 
@@ -114,13 +141,17 @@
 <!-- dragula init -->
 <script src="{{asset('assets/js/pages/kanban.init.js')}}"></script>
 
+<!-- Plugins Js -->
 <script src="{{asset('assets/libs/multiselect/jquery.multi-select.js')}}"></script>
 <script src="{{asset('assets/libs/select2/select2.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery-mask-plugin/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/libs/moment/moment.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
 
 <!-- Init js-->
 <script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>

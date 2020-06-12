@@ -36,23 +36,17 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="control-label">Started At</label>
-                        <div class="input-group">
-                            <input name="started_at" type="time" class="form-control">
-                            <!-- <input id="timepicker2" name="started_at" type="text" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
-                            </div> -->
+                        <div class="form-group">
+                            <label>Started At</label>
+                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" name="started_at">
+                            <span class="font-13 text-muted">e.g "DD/MM/YYYY HH:MM:SS"</span>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label class="control-label">Started At</label>
-                        <div class="input-group">
-                            <input name="ended_at" type="time" class="form-control">
-                            <!-- <input id="timepicker2" name="ended_at" type="text" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
-                            </div> -->
+                        <div class="form-group">
+                            <label>Ended At</label>
+                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" name="ended_at">
+                            <span class="font-13 text-muted">e.g "DD/MM/YYYY HH:MM:SS"</span>
                         </div>
                     </div>
                 </div>

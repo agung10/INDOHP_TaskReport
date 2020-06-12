@@ -15,7 +15,7 @@
                         <form id="deleteConf" method="POST" action="">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger">Submit</a>
+                            <button type="submit" class="btn btn-danger">Yes, delete it</a>
                         </form>
                     </div>
                 </div>

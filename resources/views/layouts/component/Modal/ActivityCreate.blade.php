@@ -19,10 +19,14 @@
             <div class="form-group">
                 <label>Color</label>
                 <select class="form-control" name="color">
-                    <option value="primary">Blue</option>
-                    <option value="danger">Red</option>
+                    <option value="info">Blue</option>
+                    <option value="primary">Light Blue</option>
                     <option value="success">Green</option>
                     <option value="warning">Yellow</option>
+                    <option value="danger">Red</option>
+                    <option value="purple">Purple</option>
+                    <option value="pink">Pink</option>
+                    <option value="dark">Dark</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
