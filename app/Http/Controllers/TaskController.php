@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Model\Task;
+use App\Model\UserTask;
+use App\User;
 use Illuminate\Http\Request;
+
+use DB;
 
 class TaskController extends Controller
 {
@@ -56,7 +60,20 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        abort(404);
+        $data = "";
+        $users = User::orderBy("name", "ASC")->get();
+        foreach($task->userTasks as $res){
+            $data .= $res->user_id.', ';
+        }
+        $de = explode(', ', $data);
+        foreach($users as $res){
+            if(in_array($res->id, $de)){
+                echo '<option value="'.$res->id.'" selected>'.$res->name.'</option>';
+            }
+            else{
+                echo '<option value="'.$res->id.'">'.$res->name.'</option>';
+            }
+        }
     }
 
     /**
@@ -89,7 +106,26 @@ class TaskController extends Controller
 
         $d->save();
 
-        return back()->with("alertStore", $request->input('name'));
+        $usertasks = $request->input('usertasks');
+
+        $whereArray = array('task_id' => $task->id);
+        $query = DB::Table('user_tasks');
+        foreach($whereArray as $field => $value) {
+            $query->where($field, $value);
+        }
+        $query->delete();
+
+        if(!empty($usertasks)){
+            foreach($usertasks as $res){
+                $e = new UserTask;
+                $e->user_id = $res;
+                $e->task_id = $task->id; 
+    
+                $e->save();
+            }
+        }
+
+        return back()->with("alertUpdate", $request->input('name'));
     }
 
     /**
@@ -100,6 +136,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $d = $task;
+        $name = $d->name;
+        $d->delete();
+
+        return back()->with("alertDestroy", $name);
     }
 }

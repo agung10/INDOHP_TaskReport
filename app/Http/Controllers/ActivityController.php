@@ -61,7 +61,7 @@ class ActivityController extends Controller
      */
     public function show(Activity $activity)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -72,7 +72,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -84,7 +84,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -95,6 +95,10 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        //
+        $d = $activity;
+        $name = $d->name;
+        $d->delete();
+
+        return redirect()->route('activities.index')->with("alertDestroy", $name);
     }
 }

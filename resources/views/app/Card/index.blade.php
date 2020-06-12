@@ -37,7 +37,7 @@
                     <i class="fas fa-plus mr-1"></i>
                     <span>Add New Card</span> 
                 </a>
-                <a href="#" class="btn btn-light rounded"><i class="fas fa-trash-alt mr-1"></i> Delete Activity</a>
+                <a href="#" data-uri="{{ route('activities.destroy', $activity->id) }}" class="btn btn-light rounded" data-toggle="modal" data-target="#modalDestroy"><i class="fas fa-trash-alt mr-1"></i> Delete Activity</a>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                     Add New Task
                 </a>
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item">Delete Card</a>
+                <a href="#" data-uri="{{ route('cards.destroy', $res->id) }}" class="dropdown-item" data-toggle="modal" data-target="#modalDestroy">Delete Card</a>
             </div>
         </div>
 
@@ -101,6 +101,7 @@
     @include('layouts.component.Modal.NewCard')
     @include('layouts.component.Modal.NewTask')
     @include('layouts.component.Modal.EditTask')
+    @include('layouts.component.Modal.ModalDestroy')
 @endsection
 
 @section('customJS')
@@ -151,6 +152,17 @@
         $('#IECardName').val(card_name)
 
         $('#editTaskForm').attr('action', 'tasks/'+id)
+
+        $('#IFormRemoveTask').attr('action', 'tasks/'+id)
+
+        $.ajax({
+            url: "tasks/"+id,
+            method: "GET",
+            success:function(results){
+                $('#IUserTasks').empty()
+                $('#IUserTasks').html(results)
+            }
+        })
 
         $('#editTaskModal').modal('show')
     })

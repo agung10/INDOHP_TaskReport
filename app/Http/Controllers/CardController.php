@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Card;
 use App\Model\Activity;
+use App\User;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -16,6 +17,7 @@ class CardController extends Controller
     public function index(Request $request)
     {
         $activity_id = $request->activity_id;
+        $d['users'] = User::orderBy("name", "ASC")->get();
         $d['activity'] = Activity::findOrFail($activity_id);
         $d['cards'] = Card::where("activity_id", $activity_id)->orderBy('id', 'DESC')->get();
 
@@ -62,7 +64,7 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -73,7 +75,7 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -85,7 +87,7 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -96,6 +98,10 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        //
+        $d = $card;
+        $name = $d->name;
+        $d->delete();
+
+        return back()->with("alertDestroy", $name);
     }
 }
