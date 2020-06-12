@@ -14,9 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $d['tasks'] = Task::orderBy('id', 'DESC')->get();
-
-        return view('app.Task.index', $d);
+        abort(404);
     }
 
     /**
@@ -26,7 +24,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -37,7 +35,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $d = new Task;
+        $d->card_id = $request->input("card_id");
+        $d->priority = $request->input("priority");
+        $d->name = $request->input("name");
+        $d->description = $request->input("description");
+        // $d->started_at = $request->input("started_at");
+        // $d->ended_at = $request->input("ended_at");
+
+        $d->save();
+
+        return back()->with("alertStore", $request->input('name'));
     }
 
     /**
@@ -48,7 +56,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -59,7 +67,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -71,7 +79,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $d = $task;
+        $d->card_id = $request->input("card_id");
+        $d->priority = $request->input("priority");
+        $d->name = $request->input("name");
+        $d->description = $request->input("description");
+        // $d->started_at = $request->input("started_at");
+        // $d->ended_at = $request->input("ended_at");
+
+        $d->save();
+
+        return back()->with("alertStore", $request->input('name'));
     }
 
     /**

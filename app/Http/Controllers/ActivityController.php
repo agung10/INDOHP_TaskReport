@@ -14,7 +14,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $d['activities'] = Activity::orderBy('id', 'DESC')->get();
+        $d['activities'] = Activity::orderBy('id', 'DESC')->paginate(8);
 
         return view('app.Activity.index', $d);
     }
@@ -26,7 +26,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -37,7 +37,20 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'color' => 'required|max:255',
+        ]);
+
+        $d = new Activity;
+        $d->name = $request->input('name');
+        $d->description = $request->input('description');
+        $d->color = $request->input('color');
+
+        $d->save();
+
+        return redirect()->route('activities.index')->with("alertStore", $request->input('name'));
     }
 
     /**

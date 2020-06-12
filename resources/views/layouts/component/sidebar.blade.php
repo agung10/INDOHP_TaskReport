@@ -35,10 +35,13 @@
                     <span class="menu-arrow"></span>
                 </a>
                 <ul class="nav-second-level" aria-expanded="false">
+                    @php
+                        $activities = \App\Model\Activity::orderBy("id", "DESC")->get();
+                    @endphp
                     <li><a href="{{ route('activities.index') }}">All Activities</a></li>
-                    <li><a href="{{ route('activities.create') }}">Example Activity 1</a></li>
-                    <li><a href="{{ route('activities.edit', 2) }}">Example Activity 2</a></li>
-                    <li><a href="{{ route('activities.update', 2) }}">Example Activity 3</a></li>
+                    @foreach($activities as $res)
+                    <li><a href="{{ route('cards.index') }}?activity_id={{ $res->id }}">{{ $res->name }}</a></li>
+                    @endforeach
                 </ul>
             </li>
 

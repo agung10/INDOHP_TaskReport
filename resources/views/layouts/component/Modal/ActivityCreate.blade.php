@@ -5,23 +5,24 @@
     </button>
     <h4 class="custom-modal-title">Create New Activity</h4>
     <div class="custom-modal-text">
-        <form action="#">
+        <form method="POST" action="{{ route('activities.store') }}">
+            @csrf
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" placeholder="Enter name">
-                <small id="name" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="text" name="name" class="form-control" placeholder="Enter name">
+                <small id="name" class="form-text text-muted">The name of the activity must be filled in for identification</small>
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="example-textarea">Description</label>
-                <textarea class="form-control" rows="5" id="example-textarea"></textarea>
+                <textarea class="form-control" name="description" rows="5" id="example-textarea"></textarea>
             </div>
             <div class="form-group">
                 <label>Color</label>
-                <select class="form-control">
-                    <option value="info">Biru</option>
-                    <option value="danger">Merah</option>
-                    <option value="success">Hijau</option>
-                    <option value="warning">Kuning</option>
+                <select class="form-control" name="color">
+                    <option value="primary">Blue</option>
+                    <option value="danger">Red</option>
+                    <option value="success">Green</option>
+                    <option value="warning">Yellow</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>

@@ -21,95 +21,31 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-success float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 1</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
+        @include('_FUNC.timeToDate')
+        @foreach($activities as $res)
+            @php
+                $d = $res->created_at;
+                $t = $d->format('Y-m-d');
+            @endphp
+            <div class="col-xl-4">
+                <div class="card-box project-box">
+                    <div class="badge badge-{{ $res->color }} float-right">{{ timeToDate($t) }}</div>
+                    <h4 class="mt-0"><a href="#" class="text-dark">{{ $res->name }}</a></h4>
+                    <p class="text-muted font-13">
+                        @if(strlen($res->description) > 105)
+                        {{ substr($res->description,0,105) }}..
+                        @else
+                        {{ $res->description }}
+                        @endif
+                    </p>
 
-                <a href="{{ route('cards.index') }}" class="btn btn-success rounded">View Activity</a>
+                    <a href="{{ route('cards.index') }}?activity_id={{ $res->id }}" class="btn btn-{{ $res->color }} rounded">View Activity</a>
 
+                </div>
             </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-primary float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 2</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-primary rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-danger float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 3</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-danger rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-warning float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 4</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-warning rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-success float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 5</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-success rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-warning float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 3</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-warning rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-primary float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 1</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-primary rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
-        <div class="col-xl-4">
-            <div class="card-box project-box">
-                <div class="badge badge-danger float-right">22 July 2020</div>
-                <h4 class="mt-0"><a href="#" class="text-dark">Activity 2</a></h4>
-                <p class="text-muted font-13">If several languages coalesce the grammar is more simple and regular than that of the individual languages...
-                </p>
-
-                <a href="{{ route('cards.index') }}" class="btn btn-danger rounded">View Activity</a>
-
-            </div>
-        </div><!-- end col-->
+        @endforeach
     </div>
+    {{ $activities->links() }}
     <!-- end row -->
     @include('../layouts.component.Modal.ActivityCreate')
 @endsection

@@ -5,26 +5,14 @@
     </button>
     <h4 class="custom-modal-title">Add New Card</h4>
     <div class="custom-modal-text">
-        <form action="#">
+        <form method="POST" action="{{ route('cards.store') }}">
+            @csrf
+            <input type="hidden" name="activity_id" value="{{ $activity->id }}">
             <div class="form-group">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="activity_id">Activity ID</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter name">
-                    </div>
-                </div>
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter name">
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary rounded">Submit</button>
         </form>
     </div>
 </div>

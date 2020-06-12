@@ -9,4 +9,7 @@ class Card extends Model
     public function activity(){
         return $this->belongsTo(Activity::class, "activity_id");
     }
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Card;
+use App\Model\Activity;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -12,9 +13,11 @@ class CardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $d['cards'] = Card::orderBy('id', 'DESC')->get();
+        $activity_id = $request->activity_id;
+        $d['activity'] = Activity::findOrFail($activity_id);
+        $d['cards'] = Card::where("activity_id", $activity_id)->orderBy('id', 'DESC')->get();
 
         return view('app.Card.index', $d);
     }
@@ -26,7 +29,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -37,7 +40,18 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'activity_id' => 'required',
+            'name' => 'required|max:255',
+        ]);
+        
+        $d = new Card;
+        $d->activity_id = $request->input("activity_id");
+        $d->name = $request->input("name");
+
+        $d->save();
+
+        return back()->with("alertStore", $request->input('name'));
     }
 
     /**
