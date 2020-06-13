@@ -8,7 +8,7 @@
         <div class="dropdown">
             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">{{ Auth::user()->name }}</a>
         </div>
-        <p class="text-muted">Logged In 43 minutes ago.</p>
+        <p class="text-muted">INDOHP Task Report</p>
         <ul class="list-inline">
             <li class="list-inline-item"></li>
         </ul>

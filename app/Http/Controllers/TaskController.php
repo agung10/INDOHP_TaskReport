@@ -44,8 +44,8 @@ class TaskController extends Controller
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
         $d->description = $request->input("description");
-        // $d->started_at = $request->input("started_at");
-        // $d->ended_at = $request->input("ended_at");
+        $d->started_at = str_replace("/","-",$request->input("started_at"));
+        $d->ended_at = str_replace("/","-",$request->input("ended_at"));
 
         $d->save();
 
@@ -97,12 +97,14 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $d = $task;
-        $d->card_id = $request->input("card_id");
+        if(!empty($request->input("card_id"))){
+            $d->card_id = $request->input("card_id");
+        }
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
         $d->description = $request->input("description");
-        // $d->started_at = $request->input("started_at");
-        // $d->ended_at = $request->input("ended_at");
+        $d->started_at = str_replace("/","-",$request->input("started_at"));
+        $d->ended_at = str_replace("/","-",$request->input("ended_at"));
 
         $d->save();
 

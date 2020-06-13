@@ -3,6 +3,7 @@
 @section('customCSS')
 <!-- Custom box css -->
 <link href="{{asset('assets/libs/custombox/custombox.min.css')}}" rel="stylesheet">
+<link href="{{asset('css/c-tooltip.css')}}" rel="stylesheet">
 
 <!-- Plugins css -->
 <link href="{{asset('assets/libs/multiselect/multi-select.css')}}"  rel="stylesheet" />
@@ -72,8 +73,18 @@
             @else
                 @foreach($res->tasks as $res2)
                 <li>
-                    <a href="#" class="openModalEditTask" __id="{{ $res2->id }}" __name="{{ $res2->name }}" __priority="{{ $res2->priority }}" __description="{{ $res2->description }}" __card_id="{{ $res->id }}" __card_name="{{ $res->name }}">
-                        <span class="text-muted float-right">{{ $res2->priority }}</span>
+                    <a href="#" class="openModalEditTask" __id="{{ $res2->id }}" __name="{{ $res2->name }}" __priority="{{ $res2->priority }}" __description="{{ $res2->description }}" __started_at="{{ $res2->started_at }}" __ended_at="{{ $res2->ended_at }}" __card_id="{{ $res->id }}" __card_name="{{ $res->name }}">
+                        <div class="float-right">
+                            <span class="text-muted">{{ $res2->priority }}</span><br>
+                            @if($res2->userTasks != "[]")
+                                @foreach($res2->userTasks as $res3)
+                                    <span class="c-tooltip mt-1">
+                                        <img src="{{ asset('img/user-default.jpg') }}" alt="img" class="avatar-sm rounded-circle" style="border: 1px solid #dee2e6; width: 30px; height: 30px">
+                                        <span class="c-tooltiptext">{{ $res3->user->name }}</span>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </div>
                         <h5 class="mt-0" class="text-dark">{{ $res2->name }}</h5>
                         <span class="text-muted">
                             @if(strlen($res2->description) > 30)
@@ -84,39 +95,6 @@
                         </span>
                     </a>
                 </li>
-                <div class="project-members mb-2">
-                    <h5 class="float-left mr-3">Team :</h5>
-                    <div class="avatar-group">
-                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mat Helme">
-                            <img src="{{asset('assets/images/users/user-1.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
-                        </a>
-
-                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Michael Zenaty">
-                            <img src="{{asset('assets/images/users/user-2.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
-                        </a>
-
-                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="James Anderson">
-                            <img src="{{asset('assets/images/users/user-3.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
-                        </a>
-
-                        <a href="#custom-modal" data-plugin="custommodal" class="avatar-group-item" data-animation="fadein" data-target=".bs-example-modal-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mat Helme">
-                            <img src="{{asset('assets/images/users/user-4.jpg')}}" class="rounded-circle avatar-sm" alt="friend" />
-                        </a>
-                        <a href="#" class="avatar-group-item">
-                            <span class="add-new-plus"><i class="mdi mdi-plus"></i></span>
-                        </a>
-
-                    </div>
-                </div>
-                <!-- <div class="kanban-detail">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="" data-toggle="tooltip" data-placement="top" title="{{ $res2->name }}"> 
-                                <img src="{{asset('assets/images/users/user-2.jpg')}}" alt="img" class="avatar-sm rounded-circle">
-                            </a>
-                        </li>
-                    </ul>
-                </div> -->
                 @endforeach
             @endif
         </ul>
@@ -127,7 +105,6 @@
     @include('layouts.component.Modal.NewCard')
     @include('layouts.component.Modal.NewTask')
     @include('layouts.component.Modal.EditTask')
-    @include('layouts.component.Modal.Team')
     @include('layouts.component.Modal.ModalDestroy')
 @endsection
 
@@ -155,7 +132,6 @@
 
 <!-- Init js-->
 <script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
-<script src="{{asset('js/custom-datepicker-init.js') }}"></script>
 
 <script>
     $('.openModalAddTask').click(function(){
@@ -171,12 +147,16 @@
         let name = $(this).attr('__name');
         let priority = $(this).attr('__priority');
         let description = $(this).attr('__description');
+        let started_at = $(this).attr('__started_at');
+        let ended_at = $(this).attr('__ended_at');
         let card_id = $(this).attr('__card_id')
         let card_name = $(this).attr('__card_name')
 
         $('#IName').val(name)
         $('#IPriority').val(priority)
         $('#IDescription').html(description)
+        $('#IStartedAt').val(started_at)
+        $('#IEndedAt').val(ended_at)
 
 
         $('#IECardId').val(card_id)
@@ -196,6 +176,13 @@
         })
 
         $('#editTaskModal').modal('show')
+
+        $('#selectMoveTaskToCard').hide()
+        $('#btnMoveTaskToCard').click(function(){
+            $(this).hide()
+            $('#selectMoveTaskToCard').attr('name', "card_id")
+            $('#selectMoveTaskToCard').slideDown("slow")
+        })
     })
 </script>
 
