@@ -10,7 +10,7 @@
             <input type="hidden" name="activity_id" value="{{ $activity->id }}">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter name">
+                <input type="text" name="name" class="form-control" placeholder="Enter name" required>
             </div>
             <button type="submit" class="btn btn-primary rounded">Submit</button>
         </form>

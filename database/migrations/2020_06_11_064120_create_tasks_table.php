@@ -19,8 +19,8 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('priority');
-            $table->timestamp('started_at')->nullable();
-            $table->timestamp('ended_at')->nullable();
+            $table->date('started_at')->nullable();
+            $table->date('ended_at')->nullable();
             $table->timestamps();
 
             $table->foreign('card_id')->references('id')->on('cards')->onUpdate('cascade')->onDelete('cascade');

@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(["prefix" => "app"], function(){
+Route::group(["prefix" => "app", "middleware" => "auth"], function(){
+    Route::resource('/profile', 'ProfileController');
     Route::resource('/activities', 'ActivityController');
     Route::resource('/cards', 'CardController');
     Route::resource('/tasks', 'TaskController');

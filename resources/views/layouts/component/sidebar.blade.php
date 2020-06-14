@@ -4,7 +4,11 @@
 
     <!-- User box -->
     <div class="user-box text-center">
+        @if(!empty(Auth::user()->avatar))
+        <img src="{{ asset('img/avatar/'.Auth::user()->avatar) }}" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-lg">
+        @else
         <img src="{{asset('img/user-default.jpg')}}" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-lg">
+        @endif
         <div class="dropdown">
             <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">{{ Auth::user()->name }}</a>
         </div>

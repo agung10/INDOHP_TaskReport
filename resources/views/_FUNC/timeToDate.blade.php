@@ -20,5 +20,5 @@ function timeToDate($tanggal){
 	// variabel pecahkan 1 = bulan
 	// variabel pecahkan 2 = tahun
  
-	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+	return $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2] . ' ' . $pecahkan[0];
 }

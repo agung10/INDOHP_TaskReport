@@ -12,9 +12,15 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $d['activities'] = Activity::orderBy('id', 'DESC')->paginate(8);
+        $q = $request->q;
+        if(!empty($q)){
+            $d['activities'] = Activity::where("name", "LIKE", "%$q%")->orWhere("description", "LIKE", "%$q%")->orderBy('id', 'DESC')->paginate(8);
+        }
+        else{
+            $d['activities'] = Activity::orderBy('id', 'DESC')->paginate(8);
+        }
 
         return view('app.Activity.index', $d);
     }
@@ -39,7 +45,6 @@ class ActivityController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'description' => 'required',
             'color' => 'required|max:255',
         ]);
 

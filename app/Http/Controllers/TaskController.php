@@ -44,8 +44,8 @@ class TaskController extends Controller
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
         $d->description = $request->input("description");
-        $d->started_at = str_replace("/","-",$request->input("started_at"));
-        $d->ended_at = str_replace("/","-",$request->input("ended_at"));
+        $d->started_at = date("Y-m-d", strtotime($request->input("started_at")));
+        $d->ended_at = date("Y-m-d", strtotime($request->input("ended_at")));
 
         $d->save();
 
@@ -103,8 +103,8 @@ class TaskController extends Controller
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
         $d->description = $request->input("description");
-        $d->started_at = str_replace("/","-",$request->input("started_at"));
-        $d->ended_at = str_replace("/","-",$request->input("ended_at"));
+        $d->started_at = date("Y-m-d", strtotime($request->input("started_at")));
+        $d->ended_at = date("Y-m-d", strtotime($request->input("ended_at")));
 
         $d->save();
 

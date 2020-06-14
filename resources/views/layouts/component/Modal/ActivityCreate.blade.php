@@ -9,7 +9,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter name">
+                <input type="text" name="name" class="form-control" placeholder="Enter name" required>
                 <small id="name" class="form-text text-muted">The name of the activity must be filled in for identification</small>
             </div>
             <div class="form-group">
@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label>Color</label>
-                <select class="form-control" name="color">
+                <select class="form-control" name="color" required>
                     <option value="info">Blue</option>
                     <option value="primary">Light Blue</option>
                     <option value="success">Green</option>

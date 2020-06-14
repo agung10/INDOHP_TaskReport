@@ -18,7 +18,11 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                @if(!empty(Auth::user()->avatar))
+                <img src="{{ asset('img/avatar/'.Auth::user()->avatar) }}" alt="user-image" class="rounded-circle">
+                @else
                 <img src="{{ asset('img/user-default.jpg') }}" alt="user-image" class="rounded-circle">
+                @endif
                 <span class="pro-user-name ml-1">
                     {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                 </span>
@@ -30,7 +34,7 @@
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="{{ route('profile.index') }}" class="dropdown-item notify-item">
                     <i class="fe-user"></i>
                     <span>My Account</span>
                 </a>

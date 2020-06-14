@@ -79,7 +79,11 @@
                             @if($res2->userTasks != "[]")
                                 @foreach($res2->userTasks as $res3)
                                     <span class="c-tooltip mt-1">
+                                        @if(!empty($res3->user->avatar))
+                                        <img src="{{ asset('img/avatar/'.$res3->user->avatar) }}" alt="img" class="avatar-sm rounded-circle" style="border: 1px solid #dee2e6; width: 30px; height: 30px">
+                                        @else
                                         <img src="{{ asset('img/user-default.jpg') }}" alt="img" class="avatar-sm rounded-circle" style="border: 1px solid #dee2e6; width: 30px; height: 30px">
+                                        @endif
                                         <span class="c-tooltiptext">{{ $res3->user->name }}</span>
                                     </span>
                                 @endforeach
@@ -131,7 +135,8 @@
 <script src="{{asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
 
 <!-- Init js-->
-<script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
+<script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
+<script src="{{ asset('js/datepicker-autoclose.js') }}"></script>
 
 <script>
     $('.openModalAddTask').click(function(){
@@ -155,8 +160,15 @@
         $('#IName').val(name)
         $('#IPriority').val(priority)
         $('#IDescription').html(description)
-        $('#IStartedAt').val(started_at)
-        $('#IEndedAt').val(ended_at)
+
+        function formatDate(inputDate) {
+            var date = new Date(inputDate);
+            if (!isNaN(date.getTime())) {
+                return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+            }
+        }
+        $('#IStartedAt').val(formatDate(started_at))
+        $('#IEndedAt').val(formatDate(ended_at))
 
 
         $('#IECardId').val(card_id)

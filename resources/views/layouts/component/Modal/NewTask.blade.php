@@ -38,15 +38,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Started At</label>
-                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="0000/00/00 00:00:00" name="started_at" required>
-                            <span class="font-13 text-muted">e.g "YYYY/MM/DD HH:MM:SS"</span>
+                            <input type="text" class="form-control" id="datepicker-startedat" name="started_at" required>
+                            <span class="font-13 text-muted">e.g "MM/DD/YYYY"</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Ended At</label>
-                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="0000/00/00 00:00:00" name="ended_at" required>
-                            <span class="font-13 text-muted">e.g "YYYY/MM/DD HH:MM:SS"</span>
+                            <input type="text" class="form-control" id="datepicker-endedat" name="ended_at" required>
+                            <span class="font-13 text-muted">e.g "MM/DD/YYYY"</span>
                         </div>
                     </div>
                 </div>
