@@ -159,6 +159,7 @@
 
         $('#IName').val(name)
         $('#IPriority').val(priority)
+        $('#IPriority').append(priority)
         $('#IDescription').html(description)
 
         function formatDate(inputDate) {

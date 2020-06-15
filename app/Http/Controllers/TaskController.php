@@ -43,7 +43,9 @@ class TaskController extends Controller
         $d->card_id = $request->input("card_id");
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
-        $d->description = $request->input("description");
+        if(!empty($request->input("description"))){
+            $d->description = $request->input("description");
+        }
         $d->started_at = date("Y-m-d", strtotime($request->input("started_at")));
         $d->ended_at = date("Y-m-d", strtotime($request->input("ended_at")));
 
@@ -102,7 +104,9 @@ class TaskController extends Controller
         }
         $d->priority = $request->input("priority");
         $d->name = $request->input("name");
-        $d->description = $request->input("description");
+        if(!empty($request->input("description"))){
+            $d->description = $request->input("description");
+        }
         $d->started_at = date("Y-m-d", strtotime($request->input("started_at")));
         $d->ended_at = date("Y-m-d", strtotime($request->input("ended_at")));
 

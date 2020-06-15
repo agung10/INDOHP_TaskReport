@@ -24,7 +24,7 @@
                 <img src="{{ asset('img/user-default.jpg') }}" alt="user-image" class="rounded-circle">
                 @endif
                 <span class="pro-user-name ml-1">
-                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
+                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="">
@@ -60,7 +60,7 @@
     <div class="logo-box">
         <a href="index-2.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="16">
+                <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="26">
                 <!-- <span class="logo-lg-text-light">Xeria</span> -->
             </span>
             <span class="logo-sm">
@@ -78,7 +78,7 @@
         </li>
 
         <li>
-            <h4 class="page-title-main">Dashboard</h4>
+            <h4 class="page-title-main">INDOHP Task Report</h4>
         </li>
 
     </ul>

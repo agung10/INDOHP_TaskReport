@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\User;
+use App\Model\TaskUser;
 
-use Image;
-
-class ProfileController extends Controller
+class UserActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('app.Profile.index');
+        abort(404);
     }
 
     /**
@@ -48,7 +48,8 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        abort(404);
+        $d['user'] = User::findOrFail($id);
+        return view('app.UserActivity.index', $d);
     }
 
     /**
@@ -71,28 +72,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $d = User::find($id);
-        $d->name = $request->input('name');
-        $d->phone_number = $request->input('phone_number');
-        if(!empty($request->input('password'))){
-            $d->password = \Hash::make($request->input('password'));
-        }
-
-        $avatar = $request->file('avatar');
-        if(!empty($avatar)){
-            $rand = bin2hex(openssl_random_pseudo_bytes(100)).".".$avatar->extension();
-            $rand_md5 = md5($rand).".".$avatar->extension();
-            $d->avatar = $rand_md5;
-
-            $avatar_resize = Image::make($avatar->getRealPath());              
-            $avatar_resize->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('img/avatar/' .$rand_md5));
-        }
-
-        $d->save();
-
-        return back()->with("alertUpdate", $request->input('name'));
+        abort(404);
     }
 
     /**
@@ -103,6 +83,6 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        
+        abort(404);
     }
 }

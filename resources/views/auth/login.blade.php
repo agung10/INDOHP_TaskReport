@@ -27,7 +27,7 @@
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="text-center">
                         <a href="index-2.html">
-                            <span><img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="22"></span>
+                            <span><img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="35"></span>
                         </a>
                         <p class="text-muted mt-2 mb-4">Task Reporting Application</p>
                     </div>

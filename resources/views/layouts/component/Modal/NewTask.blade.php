@@ -21,7 +21,15 @@
                     </div>
                     <div class="col-md-6">
                         <label for="priority">Priority</label>
-                        <input type="text" name="priority" class="form-control" placeholder="Enter priority" required>
+                        <select name="priority" id="priority" class="form-control" required>
+                            <option value="" selected>&mdash;</option>
+                            @php
+                                $priorities = ["Urgent", "High", "Normal", "Low", "Additional"];
+                            @endphp
+                            @foreach($priorities as $res)
+                            <option value="{{ $res }}">{{ $res }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -31,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="example-textarea">Description</label>
-                <textarea class="form-control" name="description" rows="5" id="example-textarea" required></textarea>
+                <textarea class="form-control" name="description" rows="5" id="example-textarea"></textarea>
             </div>
             <div class="form-group">
                 <div class="row">

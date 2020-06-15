@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    public function activity(){
-        return $this->belongsTo(Activity::class, "activity_id");
+    public function activity()
+    {
+        return $this->belongsTo('App\Model\Activity');
     }
-    public function tasks(){
-        return $this->hasMany(Task::class);
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Model\Task');
     }
 }

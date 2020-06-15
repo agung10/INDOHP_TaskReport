@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/test-statistic', 'HomeController@test_statistic')->name('test-statistic');
 
-Route::group(["prefix" => "app", "middleware" => "auth"], function(){
+Route::group(["prefix" => "app", "middleware" => "auth"], function () {
     Route::resource('/profile', 'ProfileController');
+    Route::resource('/useractivities', 'UserActivityController');
     Route::resource('/activities', 'ActivityController');
     Route::resource('/cards', 'CardController');
     Route::resource('/tasks', 'TaskController');
+    Route::resource('/customers', 'CustomerController');
 });

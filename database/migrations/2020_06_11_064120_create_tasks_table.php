@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->bigInteger('card_id')->unsigned();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('priority');
             $table->date('started_at')->nullable();
             $table->date('ended_at')->nullable();

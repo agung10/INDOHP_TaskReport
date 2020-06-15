@@ -36,7 +36,15 @@
                     </div>
                     <div class="col-md-6">
                         <label for="priority">Priority</label>
-                        <input id="IPriority" type="text" name="priority" class="form-control" placeholder="Enter priority" required>
+                        <select name="priority" id="priority" class="form-control" required>
+                            <option id="IPriority" selected></option>
+                            @php
+                                $priorities = ["Urgent", "High", "Normal", "Low", "Additional"];
+                            @endphp
+                            @foreach($priorities as $res)
+                            <option value="{{ $res }}">{{ $res }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -46,14 +54,14 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="example-textarea">Description</label>
-                <textarea id="IDescription" class="form-control" name="description" rows="5" id="example-textarea" required></textarea>
+                <textarea id="IDescription" class="form-control" name="description" rows="5" id="example-textarea"></textarea>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Started At</label>
-                            <input id="IStartedAt" type="text" class="form-control" name="ended_at" required>
+                            <input id="IStartedAt" type="text" class="form-control" name="started_at" required>
                             <span class="font-13 text-muted">e.g "MM/DD/YYYY"</span>
                         </div>
                     </div>
